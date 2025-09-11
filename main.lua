@@ -20,7 +20,7 @@ G:::::G        G::::G     A:::::::::::::::::::::A     M::::::M    M:::::M    M::
                                                                                                                                                                 GAMING CHAIR V4 - BEST BEDWARZ SCRIPT! (bedwarz 1, 2 and 3!)
 ]]
 
--- kool aid was developed inside stingrays basement
+-- gaming chair was developed inside stingrays basement
 -- we like hating on gamemaster :3
 
 local koolaid = {}
