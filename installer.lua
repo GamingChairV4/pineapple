@@ -1,6 +1,7 @@
 local cloneref = cloneref or function(obj)
     return obj
 end
+local httpService = cloneref(game:GetService('HttpService'))
 
 local function wipeFolders()
     for _, v in {'pineapple/games', 'pineapple/gui'} do

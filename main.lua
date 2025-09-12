@@ -48,7 +48,9 @@ local ids = {
 
 local function downloadFile(file)
     url = file:gsub('pineapple/', '')
-    writefile(file, game:HttpGet('https://raw.githubusercontent.com/GamingChairV4/pineapple/'..readfile('pineapple/commit.txt')..'/'..url))
+    if not isfile(file) then
+        writefile(file, game:HttpGet('https://raw.githubusercontent.com/GamingChairV4/pineapple/'..readfile('pineapple/commit.txt')..'/'..url))
+    end
 
     repeat task.wait() until isfile(file)
     return readfile(file)
@@ -83,10 +85,10 @@ else
 end
 
 for i,v in ids do
-    if tostring(i) == game.PlaceId then
-        return downloadFile('pineapple/games/'..v)()
+    if i == game.PlaceId then
+        return loadstring(downloadFile('pineapple/games/'..v))()
     end
 end
 
-local pineapple = {}
-return downloadFile('pineapple/games/universal.lua')()
+--local pineapple = {}
+return loadstring(downloadFile('pineapple/games/universal.lua'))()
