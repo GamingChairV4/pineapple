@@ -19,3 +19,5 @@ G:::::G        G::::G     A:::::::::::::::::::::A     M::::::M    M:::::M    M::
 
                                                                                                                                                                               GAMING CHAIR V4 - BEST BEDWARZ SCRIPT! (bedwarz 1, 2 and 3!)
 ]]
+-- omg custom guilib!!
+-- i wanted to skid from vape client's wurst gui but this is better :3
