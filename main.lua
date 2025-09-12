@@ -20,56 +20,46 @@ G:::::G        G::::G     A:::::::::::::::::::::A     M::::::M    M:::::M    M::
                                                                                                                                                                 GAMING CHAIR V4 - BEST BEDWARZ SCRIPT! (bedwarz 1, 2 and 3!)
 ]]
 
-
--- hello chat
--- no skidding
-
-local Players = game:GetService('Players')
-local starterPlayer = game:GetService('StarterPlayer')
-local inputService = game:GetService('UserInputService')
-local replicatedStorage = game:GetService('ReplicatedStorage')
-local runService = game:GetService('RunService')
-local starterGui = game:GetService('StarterGui')
-
-local getgenv
-
-if game:GetService("RunService"):IsStudio() then
-	getgenv = function()
-		return getfenv();
-	end
-else
-	getgenv = getgenv
-	Players = cloneref(game:GetService('Players'))
-	starterPlayer = cloneref(game:GetService('StarterPlayer'))
-	inputService = cloneref(game:GetService('UserInputService'))
-	replicatedStorage = cloneref(game:GetService('ReplicatedStorage'))
-	runService = cloneref(game:GetService('RunService'))
-	startergui = cloneref(game:GetService('StarterGui'))
+local cloneref = cloneref or function(obj)
+    return obj
 end
 
-function isAlive(plr: Player)
-	if plr.Character and plr.Character:FindFirstChildOfClass("Humanoid") and plr.Character:FindFirstChildOfClass("Humanoid").Health > 0 then
-		return true
-	end
-	return false
-end
-
-function getHumanoid(char)
-	if char:FindFirstChildOfClass("Humanoid") then return char:FindFirstChildOfClass("Humanoid") end
-end
+local Players = cloneref(game:GetService('Players'))
+local starterPlayer = cloneref(game:GetService('StarterPlayer'))
+local inputService = cloneref(game:GetService('UserInputService'))
+local replicatedStorage = cloneref(game:GetService('ReplicatedStorage'))
+local runService = cloneref(game:GetService('RunService'))
+local starterGui = cloneref(game:GetService('StarterGui'))
 
 local Camera = workspace.CurrentCamera
 local LocalPlayer = Players.LocalPlayer
 
+if runService:IsStudio() then
+    if not shared then
+        getfenv().shared = getfenv()
+    end
+end
+
+local function isAlive(plr: Player)
+	if plr.Character and plr.Character:FindFirstChildOfClass('Humanoid') and plr.Character:FindFirstChildOfClass('Humanoid').Health > 0 then
+		return true
+	end
+
+	return false
+end
+
+local function getHumanoid(char)
+	if char:FindFirstChildOfClass('Humanoid') then return char:FindFirstChildOfClass('Humanoid') end
+end
+
 -- Universal Features --
 local oldSpeed
 
-if getgenv().SpeedModule then
+if shared.SpeedModule then
 	local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
 	local humanoid = getHumanoid(Character)
 
 	oldSpeed = humanoid.WalkSpeed
-
 	humanoid.WalkSpeed = 35 -- no slider yet
 else
 	local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
@@ -97,4 +87,4 @@ end
 -- gaming chair was developed inside stingrays basement
 -- we like hating on gamemaster :3
 
-local koolaid = {}
+local pineapple = {}
