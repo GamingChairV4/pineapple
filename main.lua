@@ -40,6 +40,20 @@ if runService:IsStudio() then
     end
 end
 
+local ids = {
+    [17750024818] = '17750024818.lua',
+    [122483927964273] = '122483927964273.lua',
+    [71480482338212] = '71480482338212.lua'
+}
+
+local function downloadFile(file)
+    url = file:gsub('pineapple/', '')
+    writefile(file, game:HttpGet('https://raw.githubusercontent.com/GamingChairV4/pineapple/'..readfile('pineapple/commit.txt')..'/'..url))
+
+    repeat task.wait() until isfile(file)
+    return readfile(file)
+end
+
 local function isAlive(plr: Player)
 	if plr.Character and plr.Character:FindFirstChildOfClass('Humanoid') and plr.Character:FindFirstChildOfClass('Humanoid').Health > 0 then
 		return true
@@ -68,24 +82,11 @@ else
 	humanoid.WalkSpeed = oldSpeed
 end
 
--- Skidded from stav !!11!
-local ids = {
-    [17750024818] = '17750024818.lua',
-    [122483927964273] = '122483927964273.lua',
-    [71480482338212] = '71480482338212.lua'
-}
-
 for i,v in ids do
-    if tostring(i) == game.PlaceId and isfile('pineapple/games/'..v) then
-        return loadfile('pineapple/games/'..v)
+    if tostring(i) == game.PlaceId then
+        return downloadFile('pineapple/games/'..v)()
     end
 end
 
-if isfile('pineapple/games/universal.lua') then
-    return loadfile('pineapple/games/universal.lua')
-end
-
--- gaming chair was developed inside stingrays basement
--- we like hating on gamemaster :3
-
 local pineapple = {}
+return downloadFile('pineapple/games/universal.lua')()
