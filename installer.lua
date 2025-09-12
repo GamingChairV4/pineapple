@@ -1,7 +1,6 @@
 local cloneref = cloneref or function(obj)
     return obj
 end
-local folders, api = 'https://api.github.com/repos/GamingChairV4/pineapple/contents/'
 
 local function wipeFolders()
     for _, v in {'pineapple/games', 'pineapple/gui'} do
