@@ -68,20 +68,21 @@ else
 	humanoid.WalkSpeed = oldSpeed
 end
 
-if game.PlaceId == 17750024818 then
-	-- bedwarz 1 :money:
+-- Skidded from stav !!11!
+local ids = {
+    [17750024818] = '17750024818.lua',
+    [122483927964273] = '122483927964273.lua',
+    [71480482338212] = '71480482338212.lua'
+}
 
-	-- current feature system til stingy makes a ui library :/ --
+for i,v in ids do
+    if tostring(i) == game.PlaceId and isfile('pineapple/games/'..v) then
+        return loadfile('pineapple/games/'..v)
+    end
+end
 
-
-elseif game.PlaceId == 122483927964273 then
-	-- bedwarz 2 :money:
-
-
-elseif game.PlaceId == 71480482338212 then
-	-- bedwarz 3 :money:
-
-
+if isfile('pineapple/games/universal.lua') then
+    return loadfile('pineapple/games/universal.lua')
 end
 
 -- gaming chair was developed inside stingrays basement
