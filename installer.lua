@@ -5,7 +5,9 @@ end
 local function wipeFolders()
     for _, v in {'pineapple/games', 'pineapple/gui'} do
         if isfolder(v) then
-            delfolder(v)
+            for x, d in listfiles(v) do
+                delfile(d)
+            end
         end
     end
 end
